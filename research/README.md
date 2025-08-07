@@ -43,14 +43,15 @@ Once critique is complete, run the **Consolidated Summary Prompt** to synthesize
 > * Retain the **strongest examples, quotes, and psychological insights**
 > * Avoid redundancy while **honoring unique contributions** (e.g., Dumuzi, Sargon, omen tablets)
 > * Use structured formatting with clear sections:
->
 >   * Narrative Examples
 >   * Cultural Interpretation
 >   * Psychological Reflections
 > * Balance **scholarly richness** with **clarity and narrative flow** for future use (script, essay, infographic)
 > * Where appropriate, **attribute ideas to specific models or sources**
+> * **Directly cite primary sources, historical texts, or referenced materials** from the research outputs using in-text numbered citations (e.g., [1], [2]). Do not cite the research reports themselves.
+> * At the end of the summary, include a numbered **Endnotes** section listing all direct sources referenced in the text.
 >
-> **Output format**: Markdown, with bold section headers, bullet points or short paragraphs, and clear logic flow
+> **Output format**: Markdown, with bold section headers, bullet points or short paragraphs, clear logic flow, in-text numbered citations, and a final Endnotes section listing all direct sources.
 
 ---
 
