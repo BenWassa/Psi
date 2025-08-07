@@ -38,20 +38,46 @@ Use the **Critique Prompt** below in ChatGPT to evaluate all raw outputs.
 Once critique is complete, run the **Consolidated Summary Prompt** to synthesize a final version:
 
 > **Prompt:**
-> You are synthesizing multiple high-quality research outputs into a single, coherent summary. Your goals are:
->
-> * Retain the **strongest examples, quotes, and psychological insights**
-> * Avoid redundancy while **honoring unique contributions** (e.g., Dumuzi, Sargon, omen tablets)
-> * Use structured formatting with clear sections:
->   * Narrative Examples
->   * Cultural Interpretation
->   * Psychological Reflections
-> * Balance **scholarly richness** with **clarity and narrative flow** for future use (script, essay, infographic)
-> * Where appropriate, **attribute ideas to specific models or sources**
-> * **Directly cite primary sources, historical texts, or referenced materials** from the research outputs using in-text numbered citations (e.g., [1], [2]). Do not cite the research reports themselves.
-> * At the end of the summary, include a numbered **Endnotes** section listing all direct sources referenced in the text.
->
-> **Output format**: Markdown, with bold section headers, bullet points or short paragraphs, clear logic flow, in-text numbered citations, and a final Endnotes section listing all direct sources.
+You are synthesizing multiple high-quality research outputs into a single, coherent, symbolically resonant summary. This synthesis is intended to support a narrative-psychological project (e.g. podcast, essay, script, or educational artifact) focused on how cultures imagine the soul, self, or inner life across time.
+
+Objectives:
+Retain the strongest symbolic examples, metaphors, quotes, and psychological insights
+
+Eliminate redundancy while honoring culturally distinct contributions and motifs
+
+Clarify how each worldview reflects a theory of the inner life, even if implicit
+
+Allow for complexity and ambiguity without over-explaining or collapsing models into each other
+
+Structure:
+1. Narrative Glimpses
+
+Short, vivid summaries or symbols from each tradition that illustrate key ideas (e.g., descent myths, soul-judgments, initiatory visions)
+
+2. Cultural-Psychological Models
+
+Key beliefs about the self/soul: structure (if any), conflict, origin, transformation
+
+Associated rituals, ethics, or metaphysical assumptions
+
+3. Psychological Reflections
+
+What inner conflicts, existential questions, or ethical dilemmas these models sought to address
+
+How they model internal order, fragmentation, desire, memory, or purification
+
+Style & Formatting:
+Markdown output
+
+Bold section headers
+
+Short, well-structured paragraphs or bullet points
+
+In-text numbered citations for classical sources and primary texts (e.g., [1], [2])
+
+Endnotes section with numbered full references to primary sources only (not research summaries)
+
+Maintain a balance of intellectual rigor, narrative flow, and symbolic depth. When in doubt, favor conceptual clarity and cross-cultural resonance.
 
 ---
 
