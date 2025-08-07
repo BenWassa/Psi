@@ -1,55 +1,154 @@
 # Project Psi Ψ
 
-*A living chronicle of psychological thought — unfolding through voices, stories, and shifting paradigms. Starts as a lean podcast, expands into a symbolic learning environment bridging past and present.*
+*A ritual of remembrance, tracing the dream of psychology before it had a name.*
 
 ---
 
-## 🎧 Overview
+## 🎧 Project Overview
 
-**Project Psi** is a narrative-driven, audio-first exploration of psychology's evolution. Told through human stories and dual-perspective narration, it presents the history of thought not as static knowledge, but as a dynamic journey of minds, movements, and meaning-making.
+**Project Psi** is a narrative podcast and symbolic research project exploring the **origins and evolution of psychological thought** — not through textbooks or timelines, but through immersive storytelling, mythic structure, and emotionally intelligent design.
 
-We begin lean — with an intimate, episodic podcast — and grow into a modular, symbolic learning platform. This repo houses the core scripts, research layers, and visual planning for that journey.
+It begins as a ***lean audio series***: each episode a *ritualized journey* through a different era’s idea of the soul, psyche, and self.
 
----
+From there, Psi will grow into a **modular symbolic platform** — part archive, part dream-machine, part guided mythological education.
 
-## 📁 Repo Structure
+Think:
 
-docs/ → Final public deliverables (e.g. HTML site, CSS, audio embeds)
-scripts/ → Final scripts for each episode (dual narrator format)
-audio/ → Raw and processed audio files (optional)
-research/ → Sources, summaries, transcripts, bibliographies
-content/ → Companion docs: glossaries, timelines, prompts
-planning/ → Vision, roadmap, task briefs, wireframes
-
+- Carl Jung meets Joseph Campbell meets immersive audio design  
+- A mythic museum of the mind, built for the 21st century
 
 ---
 
+## ✨ New Narrative Shape (Post-Scope-Creep Recovery)
 
-## 🚀 Current Status
+**Old Scope**: Five discrete research-heavy segments  
+**New Shape**: One emotionally anchored arc → Five mythic mirrors
 
-**Phase 0 complete. Entering Phase 1: Lean Core Build.**
-- [x] Vision stack finalized  
-- [x] Milestone roadmap complete  
-- [ ] Script + audio pilot planning underway  
-- [ ] Companion content templates in planning  
+> 🎙️ *Episode 1: "Before the Mind Was Measured"*  
+> A journey through five ancient dreamworlds — from Mesopotamia to Plato — tracing how cultures imagined the soul before psychology emerged as a science.
 
----
+Each cultural lens (Mesopotamian, Egyptian, Greek, Orphic, Platonic) is now a **symbolic reflection**, not a standalone module.
 
-## 🛠️ Tech + Tools
+The episode structure follows the rhythm of a **dream ritual**:
 
-- **Written + Visual Planning**: ChatGPT, Claude, Gemini, Sora
-- **Coding + Version Control**: VSE + GitHub Copilot
-- **Audio Drafting + Scaffold**: NotebookLM (scripts, overviews)
-- **Final Output**: HTML/CSS site hosted via `/docs/`
+1. Light the candles — one mythic glimpse at a time
+2. Let the vision unfold — connected by tone, not taxonomy
+3. Close the circle — ask: What survives from these stories in us now?
 
 ---
 
-## 🌱 Long-Term Vision
+## 🚦 Milestone Phases
 
-Project Psi is a ritual of remembrance, a reclaiming of psychological lineage for modern minds. It grows into a symbolic, immersive space — bridging past and present through stories, structure, and self-inquiry.
+### ✅ Phase 0: Concept Solidified
+
+* [x] Narrative voice + tone finalized
+* [x] Core vision and platform scope defined
+* [x] Initial prompt suite complete
+* [x] Repository + documentation structured
+
+### 🚧 Phase 1: Episode 1 Build (MVP Production Loop)
+
+* [x] 5 prompts processed (Gemini + GPT/Claude)
+* [x] 3 key insights extracted per prompt
+* [x] Symbol + tone mapping in progress
+* [ ] Beatboard + scratch narration
+* [ ] Audio board test in NotebookLM
+* [ ] 15-min narrative audio prototype
+* [ ] Launch HTML/CSS site with embedded audio and companion visuals
+
+### 🌿 Phase 2: Companion Materials + Platform Expansion
+
+* [ ] Glossary, quotes, and source archive
+* [ ] Episode visual diagram (dream trail map)
+* [ ] Site modules for interactive narrative, source linking
+* [ ] Research logs exported as structured notes
+* [ ] Collaborative tooling setup for future team contributions
 
 ---
 
-## 📬 Contact / Inquiries
+## 🎙️ Production Loop (Lean & Constrained)
 
-For now, this project is run solo. Future collaborators may be invited for writing, editing, or platform contributions.
+> *No source enters the workflow unless it earns a place in the final 15-min arc.*
+
+### 🛠️ 1. Dual AI Research
+
+* Prompt each source (Gemini + GPT/Claude)
+* Cull and critique to top **3 insights per prompt**
+
+### 🧠 2. Beat Extraction
+
+* Identify:
+
+  * Story beats
+  * Emotional tones
+  * Symbols/metaphors
+  * Psychological function
+
+### 🎧 3. Scratch Narration
+
+* Record or synthesize each beat (voice notes or ElevenLabs)
+* Evaluate narrative clarity + emotional rhythm
+
+### 🧩 4. Audio Board Assembly
+
+* Tag each beat with timestamp, tone, and theme in NotebookLM
+* Align structure like a guided dream or ritual
+
+### 🔁 5. Iterate the Arc
+
+* Revise story flow until it feels like a **cohesive inner journey**
+
+### ⏱️ 6. Track the Burn Rate™
+
+* Log hours per step (research → beat → audio)
+* Use this to scope future episodes and team bandwidth
+
+---
+
+## 🗂️ Repo Structure
+
+```
+docs/       → Final public site (HTML, CSS, audio embeds)
+scripts/    → Final narrator scripts
+audio/      → Raw and processed narration files
+research/   → Source notes, summaries, citations
+content/    → Companion docs: glossaries, timelines, symbols
+planning/   → Vision docs, beatboards, task tracking
+```
+
+---
+
+## 🧪 Tools & Stack
+
+| Use                   | Tools                          |
+| --------------------- | ------------------------------ |
+| Research              | Gemini, GPT-4o, Claude         |
+| Audio Drafting        | NotebookLM, ElevenLabs (test)  |
+| Script Writing        | ChatGPT + Claude + Manual edit |
+| Visual Planning       | Figma, Excalidraw, Mermaid     |
+| Site Deployment       | HTML/CSS via `/docs/`          |
+| Collaboration (later) | GitHub + Notion (TBD)          |
+
+---
+
+## 🔭 Vision Statement
+> **Project Psi is not just a podcast — it’s an excavation.** A ritual of remembrance, tracing how ancient cultures dreamed, dissected, and dramatized the inner world before psychology had a name.
+>
+> Psi is a guided descent through the symbolic ruins of mind — before diagnostics, before data, before Freud ever dreamed of dreams.
+>
+> It is built as a modular, symbolic learning platform — blending myth, narrative, and research into something between a lecture, a guided meditation, and a museum.
+
+As it grows, Psi becomes:
+
+* A **mythic map of psychological evolution** across eras and cultures
+* A **toolkit for modern seekers**, using ancient insight to navigate identity, struggle, and self-understanding
+* A **curated archive of symbolic frameworks** for building inner meaning in a disenchanted age
+
+> The soul survives. We just need to learn to speak its tongue again.
+
+---
+
+## 💬 Contact / Contributions
+
+This project is currently solo-built with planned expansion for collaborators in writing, audio production, and platform design.
+If you'd like to contribute or follow the journey, reach out via GitHub discussions or email (TBD).
