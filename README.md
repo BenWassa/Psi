@@ -24,12 +24,13 @@ planning/ → Vision, roadmap, task briefs, wireframes
 
 ---
 
+
 ## 🚀 Current Status
 
-We are in **Phase 1: Lean Core Development**  
+**Phase 0 complete. Entering Phase 1: Lean Core Build.**
 - [x] Vision stack finalized  
-- [ ] Milestone roadmap  
-- [ ] Script + audio pilot underway  
+- [x] Milestone roadmap complete  
+- [ ] Script + audio pilot planning underway  
 - [ ] Companion content templates in planning  
 
 ---
