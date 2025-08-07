@@ -12,7 +12,7 @@
 * [x] Complete Milestone Roadmap
 * [x] Generate transactional briefs for AI roles
 * [x] Sketch core wireframes
-* [ ] Define naming and script formatting standards
+* [x] Define naming and script formatting standards
 
 ---
 
