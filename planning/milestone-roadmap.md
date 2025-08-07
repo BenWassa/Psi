@@ -10,8 +10,8 @@
 * [x] Draft and confirm GitHub repo structure
 * [x] Create README.md
 * [x] Complete Milestone Roadmap
-* [ ] Generate transactional briefs for AI roles
-* [ ] Sketch core wireframes
+* [x] Generate transactional briefs for AI roles
+* [x] Sketch core wireframes
 * [ ] Define naming and script formatting standards
 
 ---
