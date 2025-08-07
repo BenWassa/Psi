@@ -2,7 +2,14 @@
 
 This folder contains final audio files or links, with subfolders for raw and processed audio.
 
-**Phase 1:** Audio demo planning for the pilot episode is starting.
+**Phase 1:** ✅ Audio demo planning for the pilot episode complete. Ready for NotebookLM audio board testing and scratch narration.
+
+**Current Status:**
+- [x] Episode 1 scaffold finalized
+- [x] 5-segment structure defined with tone/voice mapping
+- [x] Sound design concepts outlined per segment
+- [ ] Next: NotebookLM audio board assembly
+- [ ] Next: Scratch narration recording/synthesis
 
 
 PODCAST 1 APPROACH

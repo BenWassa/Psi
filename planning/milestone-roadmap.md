@@ -23,11 +23,13 @@
 
 **Goal:** Launch pilot episode, finalize core formats, and prep basic companion content.
 
-* [ ] Select and outline 2 pilot episodes (chronological start point)
+* [x] Select and outline pilot episode ("Before the Mind Was Measured")
+* [x] Complete research foundation (5 cultural segments: Mesopotamian, Egyptian, Greek, Orphic, Platonic)
+* [x] Finalize episode scaffold and audio production framework
 * [ ] Draft 1 full episode script (dual narrator format)
 * [ ] Produce 1 audio demo (basic soundscape)
 * [ ] Create transcript + glossary companion for pilot
-* [ ] Finalize episode template structure
+* [x] Finalize episode template structure
 * [ ] Begin `docs/` site shell (HTML + assets)
 * [ ] Refine episode timeline visual (planning/wireframes)
 

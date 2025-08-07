@@ -50,7 +50,10 @@ The episode structure follows the rhythm of a **dream ritual**:
 
 * [x] 5 prompts processed (Gemini + GPT/Claude)
 * [x] 3 key insights extracted per prompt
-* [x] Symbol + tone mapping in progress
+* [x] All 5 research summaries completed (P1-P5)
+* [x] Episode 1 scaffold created ("Before the Mind Was Measured")
+* [x] Symbol + tone mapping completed
+* [x] Audio production framework defined
 * [ ] Beatboard + scratch narration
 * [ ] Audio board test in NotebookLM
 * [ ] 15-min narrative audio prototype
