@@ -9,6 +9,9 @@
   --accent-2: #a3ffcb;
   --ring: rgba(124, 196, 255, 0.55);
   --shadow: 0 10px 30px rgba(0,0,0,.35);
+
+  /* Spacing scale */
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-5: 20px; --space-6: 24px; --space-7: 32px; --space-8: 40px;
 }
 
 /* Global */
@@ -20,8 +23,16 @@ body {
   color: var(--text);
 }
 a { color: inherit; text-decoration: none; }
-.container { max-width: 1200px; margin: 0 auto; padding: 24px; }
+.container { max-width: 1160px; margin: 0 auto; padding: 24px; }
 .container { padding-left: clamp(16px, 3vw, 24px); padding-right: clamp(16px, 3vw, 24px); }
+
+/* Skip link for accessibility */
+.skip-link {
+  position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden;
+}
+.skip-link:focus {
+  left: 16px; top: 12px; width: auto; height: auto; padding: 8px 12px; background: #0f141a; border:1px solid #2a3441; border-radius: 8px; color: var(--text); z-index: 1000;
+}
 
 /* Header */
 header {
@@ -49,34 +60,34 @@ header {
 
 /* Intro */
 .hero {
-  padding: 40px 24px 18px;
+  padding: clamp(28px, 6vw, 56px) clamp(16px, 3vw, 24px) clamp(12px, 4vw, 24px);
   display: grid;
-  gap: 18px;
+  gap: clamp(12px, 2.5vw, 24px);
 }
 @media (min-width: 700px){
   .hero { grid-template-columns: 1fr auto; align-items: center; }
 }
 .hero-content { max-width: 720px; }
-.title { font-size: clamp(20px, 4vw, 36px); font-weight: 800; margin: 0 0 8px; }
-.subtitle { color: var(--muted); margin: 0; }
+.title { font-size: clamp(24px, 4.5vw, 44px); font-weight: 800; margin: 0 0 8px; }
+.subtitle { font-size: clamp(14px, 2.4vw, 16px); color: var(--muted); margin: 0; }
 
 /* Panels */
-.panels { display:grid; grid-template-columns: 1fr; gap: 16px; }
+.panels { display:grid; grid-template-columns: 1fr; gap: clamp(12px, 2vw, 20px); }
 @media (min-width: 980px) { .panels { grid-template-columns: 1fr 1fr; } }
 
 .panel {
   background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
-  border: 1px solid #1e2731; border-radius: 18px; padding: 18px; box-shadow: var(--shadow);
+  border: 1px solid #1e2731; border-radius: 18px; padding: clamp(14px, 2.4vw, 20px); box-shadow: var(--shadow);
 }
 .panel h2 { margin: 0 0 8px; font-size: 18px; letter-spacing: .4px; }
 .panel p { margin: 0 0 12px; color: var(--muted); }
 
 /* Timeline */
 .timeline-wrap { position: relative; overflow: auto; padding-bottom: 8px; }
-.timeline { display:flex; gap: 10px; padding: 12px 4px; min-width: 660px; align-items: center; }
-.rail { height: 2px; background: #2a3441; position: absolute; left: 18px; right: 18px; top: 96px; }
+.timeline { display:flex; gap: clamp(10px, 2vw, 16px); padding: clamp(8px, 2vw, 14px) 4px; min-width: 660px; align-items: center; }
+.rail { height: 2px; background: #2a3441; position: absolute; left: 18px; right: 18px; top: 92px; }
 .node {
-  min-width: 140px; background: var(--card); border:1px solid #2a3441; border-radius: 12px; padding: 14px; position: relative; cursor: pointer;
+  min-width: clamp(140px, 24vw, 220px); background: var(--card); border:1px solid #2a3441; border-radius: 12px; padding: 14px; position: relative; cursor: pointer;
   transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
 }
 .node.active { border-color: var(--accent-2); box-shadow: 0 0 0 2px var(--accent-2); }
@@ -105,7 +116,7 @@ header {
 /* Drawer */
 .drawer {
   position: fixed; left: 0; right: 0; bottom: -100%; background: var(--panel); border-top: 1px solid #2a3441;
-  box-shadow: 0 -20px 50px rgba(0,0,0,.45); border-radius: 16px 16px 0 0; padding: 20px; transition: bottom .24s ease; z-index: 80;
+  box-shadow: 0 -20px 50px rgba(0,0,0,.45); border-radius: 16px 16px 0 0; padding: clamp(16px, 3vw, 24px); transition: bottom .24s ease; z-index: 80;
 }
 .drawer.open { bottom: 0; }
 .drawer .bar { width: 44px; height: 4px; border-radius: 999px; background: #2f3c4d; margin: 0 auto 10px; }
@@ -144,7 +155,7 @@ header {
 .hero-actions { margin-top:18px; display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-start; }
 
 /* Footer */
-.footer { text-align:center; color: var(--muted); padding:40px 24px; font-size:14px; }
+.footer { text-align:center; color: var(--muted); padding: clamp(24px, 5vw, 48px) 0; font-size:14px; }
 
 /* Modal */
 .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.5); backdrop-filter: blur(2px); z-index: 90; }
