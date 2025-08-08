@@ -23,8 +23,14 @@
 
   <main class="container" id="main-view">
     <section class="hero" aria-labelledby="page-title">
-      <h1 class="title" id="page-title">Before the Mind Was Measured</h1>
-      <p class="subtitle">Walk through time, or dive into the ideas themselves. Every episode lives in both modes.</p>
+      <div class="hero-content">
+        <h1 class="title" id="page-title">Before the Mind Was Measured</h1>
+        <p class="subtitle">Walk through time, or dive into the ideas themselves. Every episode lives in both modes.</p>
+      </div>
+      <div class="hero-actions">
+        <button class="btn primary" id="btn-listen">Start Listening</button>
+        <button class="btn" id="btn-about">About the Project</button>
+      </div>
     </section>
 
     <section class="panels" aria-label="Explore Modes">
@@ -47,12 +53,8 @@
       </section>
     </section>
 
-  <div class="actions">
-      <button class="btn primary" id="btn-listen">Start Listening</button>
-      <button class="btn" id="btn-about">About the Project</button>
-    </div>
   </main>
-  
+
   <!-- New: Placeholder Episode View -->
   <section id="episode-view" class="container" hidden>
     <h1 id="episode-title"></h1>
@@ -60,6 +62,10 @@
     <div id="episode-content"></div>
     <button id="btn-back" class="btn primary">← Back to Explore</button>
   </section>
+
+  <footer class="footer">
+    <p>© 2024 The Mind Unfolding</p>
+  </footer>
 
   <!-- Drawer -->
   <aside class="drawer" id="drawer" aria-live="polite" aria-label="Details Drawer">
