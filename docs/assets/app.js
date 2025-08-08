@@ -139,6 +139,7 @@ function renderTimeline(items) {
   });
   attachOpenHandlers('#timeline-list .node');
   addTimelineKeyboardNav(wrap);
+  setupTimelineScroll();
 }
 
 function renderThemes(items) {
@@ -174,13 +175,45 @@ function addTimelineKeyboardNav(container){
       e.preventDefault();
       const next = list[Math.min(currentIndex + 1, list.length - 1)];
       next?.focus();
+      next?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
     }
     if (e.key === 'ArrowLeft') {
       e.preventDefault();
       const prev = list[Math.max(currentIndex - 1, 0)];
       prev?.focus();
+      prev?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
     }
   });
+}
+
+function setupTimelineScroll(){
+  const scroller = document.querySelector('.timeline-wrap');
+  const prev = document.querySelector('.timeline-nav.prev');
+  const next = document.querySelector('.timeline-nav.next');
+  if(!scroller || !prev || !next) return;
+
+  const scrollAmount = () => {
+    const timeline = scroller.querySelector('.timeline');
+    const node = timeline?.querySelector('.node');
+    const styles = timeline ? getComputedStyle(timeline) : null;
+    const gap = styles ? parseInt(styles.columnGap || styles.gap || 0, 10) : 0;
+    return (node?.offsetWidth || 260) + gap;
+  };
+
+  prev.addEventListener('click', () => {
+    scroller.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+  });
+  next.addEventListener('click', () => {
+    scroller.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
+  });
+
+  const update = () => {
+    const max = scroller.scrollWidth - scroller.clientWidth - 1;
+    prev.disabled = scroller.scrollLeft <= 0;
+    next.disabled = scroller.scrollLeft >= max;
+  };
+  scroller.addEventListener('scroll', update);
+  update();
 }
 
 function addGridKeyboardNav(container, itemSelector){

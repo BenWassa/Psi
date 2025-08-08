@@ -78,9 +78,13 @@
       <section id="panel-timeline" class="panel" role="tabpanel" aria-labelledby="tab-timeline">
         <h2>Timeline Mode</h2>
         <p>Follow the chronological spine from the dawn of recorded thought.</p>
-        <div class="timeline-wrap">
-          <div class="rail"></div>
-          <div class="timeline" id="timeline-list" role="list"></div>
+        <div class="timeline-shell">
+          <button class="timeline-nav prev" aria-label="Scroll timeline left">&#x2039;</button>
+          <div class="timeline-wrap">
+            <div class="rail"></div>
+            <div class="timeline" id="timeline-list" role="list"></div>
+          </div>
+          <button class="timeline-nav next" aria-label="Scroll timeline right">&#x203A;</button>
         </div>
         <p class="note">Tip: Scroll horizontally to browse, or use arrow keys to focus nodes and press Enter.</p>
       </section>
