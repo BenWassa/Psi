@@ -5,28 +5,32 @@
       "era": "c. 2600–1200 BCE",
       "themes": ["Dream Realms", "Fate & Omens"],
       "desc": "Dreams as divine command; the traveling soul; royal dream-omen politics.",
-      "slug": "mesopotamia"
+      "slug": "mesopotamia",
+      "contentUrl": "./content/mesopotamia.html"
     },
     {
       "title": "Egypt",
       "era": "c. 2500–300 BCE",
       "themes": ["Soul Architecture", "Judgment"],
       "desc": "Ka & Ba, the weighing of the heart, and dream-books as guidance.",
-      "slug": "egypt"
+      "slug": "egypt",
+      "contentUrl": "./content/egypt.html"
     },
     {
       "title": "Greece I — Asclepian Temples",
       "era": "c. 500–200 BCE",
       "themes": ["Healing", "Dreams"],
       "desc": "Ritual sleep (enkóimesis); snakes, water, silence; recorded cures by priests.",
-      "slug": "greece-asclepian"
+      "slug": "greece-asclepian",
+      "contentUrl": "./content/greece-asclepian.html"
     },
     {
       "title": "Greece II — Orphic & Platonic Psyche",
       "era": "c. 500–300 BCE",
       "themes": ["Soul Architecture", "Purification"],
       "desc": "Orphic soul-prison myth; Platonic tripartite psyche and moral cultivation.",
-      "slug": "greece-psyche"
+      "slug": "greece-psyche",
+      "contentUrl": "./content/greece-psyche.html"
     }
   ],
   "themes": [
