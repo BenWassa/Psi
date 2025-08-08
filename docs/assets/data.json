@@ -1,0 +1,55 @@
+{
+  "timeline": [
+    {
+      "title": "Mesopotamia",
+      "era": "c. 2600–1200 BCE",
+      "themes": ["Dream Realms", "Fate & Omens"],
+      "desc": "Dreams as divine command; the traveling soul; royal dream-omen politics.",
+      "slug": "mesopotamia"
+    },
+    {
+      "title": "Egypt",
+      "era": "c. 2500–300 BCE",
+      "themes": ["Soul Architecture", "Judgment"],
+      "desc": "Ka & Ba, the weighing of the heart, and dream-books as guidance.",
+      "slug": "egypt"
+    },
+    {
+      "title": "Greece I — Asclepian Temples",
+      "era": "c. 500–200 BCE",
+      "themes": ["Healing", "Dreams"],
+      "desc": "Ritual sleep (enkóimesis); snakes, water, silence; recorded cures by priests.",
+      "slug": "greece-asclepian"
+    },
+    {
+      "title": "Greece II — Orphic & Platonic Psyche",
+      "era": "c. 500–300 BCE",
+      "themes": ["Soul Architecture", "Purification"],
+      "desc": "Orphic soul-prison myth; Platonic tripartite psyche and moral cultivation.",
+      "slug": "greece-psyche"
+    }
+  ],
+  "themes": [
+    {
+      "title": "Dream Realms",
+      "linked": ["Mesopotamia", "Greece I — Asclepian Temples"],
+      "desc": "From omen tablets to temple-healing sleep — dreams as portals and prescriptions.",
+      "summary": "Dreams as portals, omens, and cures.",
+      "slug": "dream-realms"
+    },
+    {
+      "title": "Soul Architecture",
+      "linked": ["Egypt", "Greece II — Orphic & Platonic Psyche"],
+      "desc": "Ka & Ba, Orphic dualism, and Plato’s tripartite psyche.",
+      "summary": "What is the self made of?",
+      "slug": "soul-architecture"
+    },
+    {
+      "title": "Healing & Transformation",
+      "linked": ["Greece I — Asclepian Temples", "Modern"],
+      "desc": "Incubation rites, purification, and the long arc toward psychotherapy.",
+      "summary": "Ritual, medicine, and psyche.",
+      "slug": "healing-transformation"
+    }
+  ]
+}

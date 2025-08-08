@@ -1,0 +1,18 @@
+{
+  // VS Code tasks to serve the docs site locally using Node's http-server.
+  // Requires Node.js. If you don't have http-server, the task installs it temporarily via npx.
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Serve docs",
+      "type": "shell",
+      "command": "npx http-server docs -p 5173 -c-1 -o",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "detail": "Start a local static server for docs/ at http://localhost:5173 with no caching.",
+      "isBackground": true
+    }
+  ]
+}

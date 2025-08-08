@@ -104,32 +104,163 @@ function showMainView() {
   window.scrollTo(0, 0);
 }
 
-// Event listeners
-if (tabTimeline) tabTimeline.addEventListener('click', () => setTab('timeline'));
-if (tabThemes) tabThemes.addEventListener('click', () => setTab('themes'));
+// Data-driven rendering and routing
+(async function init() {
+  try {
+    const res = await fetch('./assets/data.json', { cache: 'no-store' });
+    const data = await res.json();
+    renderTimeline(data.timeline);
+    renderThemes(data.themes);
+    wireCommonHandlers();
+    applyHashRoute();
+  } catch (e) {
+    console.error('Failed to load data.json', e);
+  }
+})();
 
-attachOpenHandlers('.node');
-attachOpenHandlers('.theme');
+function renderTimeline(items) {
+  const wrap = document.getElementById('timeline-list');
+  if (!wrap) return;
+  wrap.innerHTML = '';
+  items.forEach(item => {
+    const el = document.createElement('article');
+    el.className = 'node';
+    el.setAttribute('role', 'listitem');
+    el.setAttribute('tabindex', '0');
+    el.dataset.title = item.title;
+    el.dataset.era = item.era;
+    el.dataset.themes = (item.themes || []).join(', ');
+    el.dataset.desc = item.desc || '';
+    el.dataset.slug = item.slug;
+    el.innerHTML = `<div class="eyebrow">Era</div><div class="name">${item.title}</div><div class="meta">${item.era}</div>`;
+    wrap.appendChild(el);
+  });
+  attachOpenHandlers('#timeline-list .node');
+  addTimelineKeyboardNav(wrap);
+}
 
-if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
-if (backBtn) backBtn.addEventListener('click', showMainView);
+function renderThemes(items) {
+  const wrap = document.getElementById('themes-list');
+  if (!wrap) return;
+  wrap.innerHTML = '';
+  items.forEach(item => {
+    const el = document.createElement('article');
+    el.className = 'theme';
+    el.setAttribute('role', 'listitem');
+    el.setAttribute('tabindex', '0');
+    el.dataset.title = item.title;
+    el.dataset.linked = (item.linked || []).join(', ');
+    el.dataset.desc = item.desc || '';
+    el.dataset.slug = item.slug;
+    el.innerHTML = `<h3>${item.title}</h3><p>${item.summary || 'Cross-cultural idea.'}</p>`;
+    wrap.appendChild(el);
+  });
+  attachOpenHandlers('#themes-list .theme');
+}
 
-// Global shortcuts and outside-click to close
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    if (drawer.classList.contains('open')) {
+function addTimelineKeyboardNav(container){
+  const nodes = () => Array.from(container.querySelectorAll('.node'));
+  container.addEventListener('keydown', (e) => {
+    const list = nodes();
+    const currentIndex = list.indexOf(document.activeElement);
+    if (currentIndex === -1) return;
+
+    if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      const next = list[Math.min(currentIndex + 1, list.length - 1)];
+      next?.focus();
+    }
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      const prev = list[Math.max(currentIndex - 1, 0)];
+      prev?.focus();
+    }
+  });
+}
+
+function wireCommonHandlers(){
+  // Tabs
+  tabTimeline?.addEventListener('click', () => setTab('timeline'));
+  tabThemes?.addEventListener('click', () => setTab('themes'));
+
+  // Drawer
+  closeBtn?.addEventListener('click', closeDrawer);
+
+  // Episode Back
+  backBtn?.addEventListener('click', showMainView);
+
+  // Global shortcuts
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (drawer.classList.contains('open')) {
+        closeDrawer();
+      } else if (!episodeView.hidden) {
+        showMainView();
+      } else if (!aboutModal.hidden) {
+        closeAbout();
+      }
+    }
+  });
+
+  // Click-away to close drawer
+  document.addEventListener('click', (e) => {
+    if (drawer.classList.contains('open') && !drawer.contains(e.target) && !e.target.closest('.node, .theme')) {
       closeDrawer();
-    } else if (!episodeView.hidden) {
-      showMainView();
+    }
+  });
+
+  // Buttons
+  document.getElementById('btn-listen')?.addEventListener('click', () => setTab('timeline'));
+  document.getElementById('btn-about')?.addEventListener('click', openAbout);
+}
+
+// About modal
+const aboutModal = document.getElementById('about-modal');
+const aboutOverlay = document.getElementById('about-overlay');
+const aboutClose = document.getElementById('about-close');
+
+function openAbout(){
+  aboutOverlay.hidden = false;
+  aboutModal.hidden = false;
+  document.body.style.overflow = 'hidden';
+  aboutClose?.focus();
+}
+function closeAbout(){
+  aboutOverlay.hidden = true;
+  aboutModal.hidden = true;
+  document.body.style.overflow = '';
+}
+aboutOverlay?.addEventListener('click', closeAbout);
+aboutClose?.addEventListener('click', closeAbout);
+
+// Hash routing: #mode=timeline|themes, #episode=slug
+window.addEventListener('hashchange', applyHashRoute);
+function applyHashRoute(){
+  const params = new URLSearchParams(location.hash.replace(/^#/, ''));
+  const mode = params.get('mode');
+  const episode = params.get('episode');
+
+  if (mode === 'themes') setTab('themes');
+  else if (mode === 'timeline') setTab('timeline');
+
+  if (episode) {
+    // Try to find a node with matching slug and open episode page
+    const el = document.querySelector(`.node[data-slug="${CSS.escape(episode)}"]`);
+    if (el) {
+      openDrawerFrom(el);
+      // Directly open the episode page instead of waiting for button
+      const data = el.dataset;
+      showEpisodePage(data);
     }
   }
-});
+}
 
-document.addEventListener('click', (e) => {
-  if (drawer.classList.contains('open') && !drawer.contains(e.target) && !e.target.closest('.node, .theme')) {
-    closeDrawer();
-  }
-});
-
-document.getElementById('btn-listen')?.addEventListener('click', () => setTab('timeline'));
-document.getElementById('btn-about')?.addEventListener('click', () => setTab('themes'));
+// When opening episode via button, update the hash
+const originalShowEpisodePage = showEpisodePage;
+showEpisodePage = function(data){
+  const params = new URLSearchParams(location.hash.replace(/^#/, ''));
+  params.set('mode', 'timeline');
+  if (data.slug) params.set('episode', data.slug);
+  location.hash = `#${params.toString()}`;
+  originalShowEpisodePage(data);
+};

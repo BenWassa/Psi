@@ -34,12 +34,7 @@
         <p>Follow the chronological spine from the dawn of recorded thought.</p>
         <div class="timeline-wrap">
           <div class="rail"></div>
-          <div class="timeline" role="list">
-            <article class="node" role="listitem" tabindex="0" data-title="Mesopotamia" data-era="c. 2600–1200 BCE" data-themes="Dream Realms, Fate & Omens" data-desc="Dreams as divine command; the traveling soul; royal dream-omen politics."></article>
-            <article class="node" role="listitem" tabindex="0" data-title="Egypt" data-era="c. 2500–300 BCE" data-themes="Soul Architecture, Judgment" data-desc="Ka & Ba, the weighing of the heart, and dream-books as guidance."></article>
-            <article class="node" role="listitem" tabindex="0" data-title="Greece I — Asclepian Temples" data-era="c. 500–200 BCE" data-themes="Healing, Dreams" data-desc="Ritual sleep (enkóimesis); snakes, water, silence; recorded cures by priests."></article>
-            <article class="node" role="listitem" tabindex="0" data-title="Greece II — Orphic & Platonic Psyche" data-era="c. 500–300 BCE" data-themes="Soul Architecture, Purification" data-desc="Orphic soul-prison myth; Platonic tripartite psyche and moral cultivation."></article>
-          </div>
+          <div class="timeline" id="timeline-list" role="list"></div>
         </div>
         <p class="note">Tip: Scroll horizontally to browse, or use arrow keys to focus nodes and press Enter.</p>
       </section>
@@ -48,11 +43,7 @@
       <section id="panel-themes" class="panel" role="tabpanel" aria-labelledby="tab-themes" hidden>
         <h2>Theme Mode</h2>
         <p>Jump between the big ideas that echo across eras.</p>
-        <div class="themes" role="list">
-          <article class="theme" role="listitem" tabindex="0" data-title="Dream Realms" data-linked="Mesopotamia, Greece I" data-desc="From omen tablets to temple-healing sleep — dreams as portals and prescriptions."><h3>Dream Realms</h3><p>Dreams as portals, omens, and cures.</p></article>
-          <article class="theme" role="listitem" tabindex="0" data-title="Soul Architecture" data-linked="Egypt, Greece II" data-desc="Ka & Ba, Orphic dualism, and Plato’s tripartite psyche."><h3>Soul Architecture</h3><p>What is the self made of?</p></article>
-          <article class="theme" role="listitem" tabindex="0" data-title="Healing & Transformation" data-linked="Greece I, Modern" data-desc="Incubation rites, purification, and the long arc toward psychotherapy."><h3>Healing & Transformation</h3><p>Ritual, medicine, and psyche.</p></article>
-        </div>
+  <div class="themes" id="themes-list" role="list"></div>
       </section>
     </section>
 
@@ -85,6 +76,18 @@
       </div>
     </div>
   </aside>
+
+  <!-- About Modal -->
+  <div class="modal-overlay" id="about-overlay" hidden></div>
+  <section class="modal" id="about-modal" role="dialog" aria-modal="true" aria-labelledby="about-title" hidden>
+    <div class="modal-header">
+      <h2 id="about-title">About the Project</h2>
+      <button class="btn" id="about-close" aria-label="Close About">Close</button>
+    </div>
+    <div class="modal-body">
+      <p>The Mind Unfolding explores pre-modern ideas about the soul, dreams, and self across cultures, presented in timeline and theme views. This prototype demonstrates the UX and interaction model. Content will deepen with sourced texts, audio, and transcripts.</p>
+    </div>
+  </section>
   <noscript>
     <div class="container" role="note">This experience requires JavaScript to interact with the timeline and themes.</div>
   </noscript>
