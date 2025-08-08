@@ -128,6 +128,37 @@ planning/   → Vision docs, beatboards, task tracking
 
 ---
 
+## 🚀 GitHub Pages & Local Dev
+
+This site is served from the `docs/` folder, compatible with GitHub Pages.
+
+- docs/.nojekyll — disables Jekyll processing (so assets load as-is)
+- docs/404.html — SPA fallback that redirects back to `docs/index.html` (keeps hash routing working)
+
+### Local development
+
+Use a small static server so the app can fetch `assets/data.json` without file:// issues.
+
+- VS Code task: "Serve docs" (requires Node.js)
+  1. Open the Command Palette → "Run Task" → "Serve docs"
+  2. Browser will open at http://localhost:5173
+
+Alternatively, use any static HTTP server to serve the `docs/` directory.
+
+### Deploy to GitHub Pages
+
+1) Push to `main` with your changes (including `docs/`)
+2) In your repository settings → Pages:
+   - Source: Deploy from a branch
+   - Branch: `main` (folder: `/docs`)
+3) Visit your site at: `https://<user-or-org>.github.io/<repo>/docs/`
+
+Deep links
+- The app uses hash routing (e.g., `#mode=timeline&episode=egypt`), which is preserved on Pages.
+- The `404.html` redirects back to `docs/index.html` to recover if a path is opened directly.
+
+---
+
 ## 🧪 Tools & Stack
 
 | Use                   | Tools                          |

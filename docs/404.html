@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Not Found — The Mind Unfolding</title>
+  <meta http-equiv="refresh" content="0; url=/Psi/docs/index.html" />
+  <style>
+    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; display:grid; place-items:center; min-height:100vh; background:#0b0d10; color:#e9f0f8; }
+    a { color:#7cc4ff; }
+    .wrap { max-width: 680px; padding: 24px; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Redirecting…</h1>
+    <p>If you're not redirected automatically, <a id="fallback" href="/Psi/docs/index.html">click here</a>.</p>
+  </div>
+  <script>
+    // GitHub Pages 404 fallback for client-side routing
+    // Try hash-preserving redirect
+    (function(){
+      var target = '/Psi/docs/index.html' + (location.hash || '');
+      document.getElementById('fallback').setAttribute('href', target);
+      location.replace(target);
+    })();
+  </script>
+</body>
+</html>
