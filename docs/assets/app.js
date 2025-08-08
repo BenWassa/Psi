@@ -143,6 +143,8 @@ function renderThemes(items) {
   const wrap = document.getElementById('themes-list');
   if (!wrap) return;
   wrap.innerHTML = '';
+  // Ensure grid is navigable by arrow keys
+  wrap.setAttribute('role', 'list');
   items.forEach(item => {
     const el = document.createElement('article');
     el.className = 'theme';
@@ -156,6 +158,7 @@ function renderThemes(items) {
     wrap.appendChild(el);
   });
   attachOpenHandlers('#themes-list .theme');
+  addGridKeyboardNav(wrap, '.theme');
 }
 
 function addTimelineKeyboardNav(container){
@@ -177,6 +180,41 @@ function addTimelineKeyboardNav(container){
     }
   });
 }
+
+function addGridKeyboardNav(container, itemSelector){
+  const items = () => Array.from(container.querySelectorAll(itemSelector));
+  container.addEventListener('keydown', (e) => {
+    const list = items();
+    const current = document.activeElement;
+    const idx = list.indexOf(current);
+    if (idx === -1) return;
+
+    const cols = getComputedStyle(container).gridTemplateColumns.split(' ').length || 3;
+
+    if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      list[Math.min(idx + 1, list.length - 1)]?.focus();
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      list[Math.max(idx - 1, 0)]?.focus();
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      list[Math.min(idx + cols, list.length - 1)]?.focus();
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      list[Math.max(idx - cols, 0)]?.focus();
+    }
+  });
+}
+
+// Improve hash route tab selection ARIA state
+const _setTab = setTab;
+setTab = function(tab){
+  _setTab(tab);
+  const isTimeline = tab === 'timeline';
+  document.getElementById('tab-timeline')?.setAttribute('aria-selected', String(isTimeline));
+  document.getElementById('tab-themes')?.setAttribute('aria-selected', String(!isTimeline));
+};
 
 function wireCommonHandlers(){
   // Tabs
