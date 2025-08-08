@@ -9,6 +9,8 @@ const dDesc = document.getElementById('drawer-desc');
 const dChips = document.getElementById('drawer-chips');
 const closeBtn = document.getElementById('drawer-close');
 const drawerEpisodeBtn = document.getElementById('drawer-episode-btn');
+const navToggle = document.getElementById('menu-toggle');
+const navLinks = document.getElementById('nav-links');
 
 // View-switching elements
 const mainView = document.getElementById('main-view');
@@ -250,6 +252,11 @@ function wireCommonHandlers(){
   // Buttons
   document.getElementById('btn-listen')?.addEventListener('click', () => setTab('timeline'));
   document.getElementById('btn-about')?.addEventListener('click', openAbout);
+  document.getElementById('nav-about')?.addEventListener('click', (e) => { e.preventDefault(); openAbout(); });
+  navToggle?.addEventListener('click', () => {
+    const expanded = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', String(expanded));
+  });
 }
 
 // Focus trap utilities
