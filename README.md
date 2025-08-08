@@ -1,39 +1,45 @@
 # Project Psi Ψ
 
-*A ritual of remembrance, tracing the dream of psychology before it had a name.*
+*Interactive companion to The Mind Unfolding — explore the history of psychology by time and by idea.*
 
 ---
 
 ## 🎧 Project Overview
 
-**Project Psi** is a narrative podcast and symbolic research project exploring the **origins and evolution of psychological thought** — not through textbooks or timelines, but through immersive storytelling, mythic structure, and emotionally intelligent design.
+Project Psi powers The Mind Unfolding — an audio series with a lightweight, interactive companion site. Together they explore the **history of psychology** as a living story you can hear and navigate.
 
-It begins as a ***lean audio series***: each episode a *ritualized journey* through a different era’s idea of the soul, psyche, and self.
+The site is built for two complementary ways of learning:
 
-From there, Psi will grow into a **modular symbolic platform** — part archive, part dream-machine, part guided mythological education.
+- Timeline Mode — Walk chronologically through key eras via short, focused episode cards.
+- Theme Mode — Jump between cross‑cultural ideas (e.g., “Dream Realms,” “Soul Architecture”) and watch concepts evolve across time.
+
+Every episode appears in both modes, so you can follow the story linearly or hop between connected ideas. The goal is clarity, context, and curiosity — turning listening into exploration.
 
 Think:
 
-- Carl Jung meets Joseph Campbell meets immersive audio design  
-- A mythic museum of the mind, built for the 21st century
+- Carl Jung meets Joseph Campbell meets modern, minimal web design
+- A navigable museum of the mind you can browse by time or idea
 
 ---
 
-## ✨ New Narrative Shape (Post-Scope-Creep Recovery)
+## 🧭 Interactive Companion Vision
 
-**Old Scope**: Five discrete research-heavy segments  
-**New Shape**: One emotionally anchored arc → Five mythic mirrors
+The Mind Unfolding is paired with a dual‑mode site that mirrors each episode in two views:
 
-> 🎙️ *Episode 1: "Before the Mind Was Measured"*  
-> A journey through five ancient dreamworlds — from Mesopotamia to Plato — tracing how cultures imagined the soul before psychology emerged as a science.
+1) Timeline Mode
+- Chronological spine of the field — eras, thinkers, and turning points
+- Episode cards with quick context, tags, and links to listen/read
 
-Each cultural lens (Mesopotamian, Egyptian, Greek, Orphic, Platonic) is now a **symbolic reflection**, not a standalone module.
+2) Theme Mode
+- Cross‑cultural concepts that thread through history (e.g., dreams, soul models, healing)
+- Each concept aggregates related episodes across eras
 
-The episode structure follows the rhythm of a **dream ritual**:
+Design principles:
+- One source of truth per episode; many paths through it
+- Minimal, accessible UI (keyboard and screen‑reader friendly)
+- Fast to scan, easy to dive deeper (audio, transcript, glossary)
 
-1. Light the candles — one mythic glimpse at a time
-2. Let the vision unfold — connected by tone, not taxonomy
-3. Close the circle — ask: What survives from these stories in us now?
+Status: The MVP dual‑mode mockup lives in `/docs/index.html` and will expand as episodes ship.
 
 ---
 
@@ -54,16 +60,17 @@ The episode structure follows the rhythm of a **dream ritual**:
 * [x] Episode 1 scaffold created ("Before the Mind Was Measured")
 * [x] Symbol + tone mapping completed
 * [x] Audio production framework defined
+* [x] Dual‑mode site mockup (Timeline/Themes) in `/docs`
 * [ ] Beatboard + scratch narration
 * [ ] Audio board test in NotebookLM
-* [ ] 15-min narrative audio prototype
-* [ ] Launch HTML/CSS site with embedded audio and companion visuals
+* [ ] 15‑min narrative audio prototype
+* [ ] Publish Episode 1 page with audio + transcript
 
 ### 🌿 Phase 2: Companion Materials + Platform Expansion
 
 * [ ] Glossary, quotes, and source archive
-* [ ] Episode visual diagram (dream trail map)
-* [ ] Site modules for interactive narrative, source linking
+* [ ] Episode cards wired to both modes (time + theme)
+* [ ] Cross‑linking: episode ↔ related themes ↔ adjacent eras
 * [ ] Research logs exported as structured notes
 * [ ] Collaborative tooling setup for future team contributions
 
@@ -95,7 +102,7 @@ The episode structure follows the rhythm of a **dream ritual**:
 ### 🧩 4. Audio Board Assembly
 
 * Tag each beat with timestamp, tone, and theme in NotebookLM
-* Align structure like a guided dream or ritual
+* Align structure to episode arc and site modes (Timeline/Themes)
 
 ### 🔁 5. Iterate the Arc
 
@@ -111,7 +118,7 @@ The episode structure follows the rhythm of a **dream ritual**:
 ## 🗂️ Repo Structure
 
 ```
-docs/       → Final public site (HTML, CSS, audio embeds)
+docs/       → Public site (HTML/CSS/JS). Dual‑mode MVP in index.html
 scripts/    → Final narrator scripts
 audio/      → Raw and processed narration files
 research/   → Source notes, summaries, citations
@@ -125,29 +132,24 @@ planning/   → Vision docs, beatboards, task tracking
 
 | Use                   | Tools                          |
 | --------------------- | ------------------------------ |
-| Research              | Gemini, GPT-4o, Claude         |
+| Research              | Gemini, GPT‑4o, Claude         |
 | Audio Drafting        | NotebookLM, ElevenLabs (test)  |
 | Script Writing        | ChatGPT + Claude + Manual edit |
+| Site UI               | HTML/CSS + vanilla JS (`/docs`)|
 | Visual Planning       | Figma, Excalidraw, Mermaid     |
-| Site Deployment       | HTML/CSS via `/docs/`          |
+| Deployment            | GitHub Pages via `/docs/`      |
 | Collaboration (later) | GitHub + Notion (TBD)          |
 
 ---
 
 ## 🔭 Vision Statement
-> **Project Psi is not just a podcast — it’s an excavation.** A ritual of remembrance, tracing how ancient cultures dreamed, dissected, and dramatized the inner world before psychology had a name.
->
-> Psi is a guided descent through the symbolic ruins of mind — before diagnostics, before data, before Freud ever dreamed of dreams.
->
-> It is built as a modular, symbolic learning platform — blending myth, narrative, and research into something between a lecture, a guided meditation, and a museum.
+An interactive companion to the history of psychology: listen to the story, then explore it by time and idea. Each episode anchors a small, reliable node; the site lets those nodes recombine into paths, clusters, and questions.
 
 As it grows, Psi becomes:
 
-* A **mythic map of psychological evolution** across eras and cultures
-* A **toolkit for modern seekers**, using ancient insight to navigate identity, struggle, and self-understanding
-* A **curated archive of symbolic frameworks** for building inner meaning in a disenchanted age
-
-> The soul survives. We just need to learn to speak its tongue again.
+* A **map of psychological evolution** across eras and cultures
+* A **toolkit for learners**, linking episodes to glossaries, sources, and visuals
+* A **clean, extensible interface** for cross‑connecting ideas without complexity
 
 ---
 

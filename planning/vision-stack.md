@@ -10,7 +10,14 @@ To retell the history of psychology as a human journey — not as a cold progres
 
 ### 2. Primary Format
 
-*Project Psi* begins as a **chronological, narrative-driven podcast**. The audio-first format offers accessibility, intimacy, and flexibility. It supports a lean launch while enabling emotional storytelling and modular growth.
+The core is a **dual product**:
+
+* A lean, narrative‑driven audio series (10–15 min episodes)
+* An interactive companion site with two modes of exploration:
+	* **Timeline Mode** — chronological spine with era cards and key turning points
+	* **Theme Mode** — cross‑cultural concepts like “Dream Realms” and “Soul Architecture”
+
+Every episode lives in both modes for bidirectional discovery.
 
 ---
 
@@ -29,10 +36,10 @@ This may be partially implemented in audio depending on tooling limitations. How
 
 **Four-phase expansion roadmap:**
 
-1. **Lean Core:** Audio episodes (10–15 mins), chronological spine
-2. **Tier 1:** Companion docs, glossaries, transcripts, prompts
-3. **Tier 2:** Interactive concept maps, timelines, thematic deep dives
-4. **Tier 3:** Immersive website, community features, scholarly partnerships
+1. **Lean Core:** Episode 1 + MVP dual‑mode site (`/docs/index.html`)
+2. **Tier 1:** Episode pages, transcripts, glossaries; wire up episode ↔ theme ↔ era links
+3. **Tier 2:** Expand theme clusters, add basic JS filters/search, lightweight concept map
+4. **Tier 3:** Community features, educator kits, deeper visualizations
 
 ---
 
