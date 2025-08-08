@@ -141,6 +141,12 @@ header {
 .modal-header { display:flex; align-items:center; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
 .modal-body { color: var(--muted); line-height: 1.6; }
 
+/* Prevent body scroll when a modal/drawer is open */
+body.modal-open { overflow: hidden; }
+
+/* Fallback: block pointer events on inert elements in browsers that support the attribute but not behavior */
+[inert] { pointer-events: none; }
+
 /* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }

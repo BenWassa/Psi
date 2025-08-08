@@ -214,24 +214,116 @@ function wireCommonHandlers(){
   document.getElementById('btn-about')?.addEventListener('click', openAbout);
 }
 
-// About modal
+// Focus trap utilities
+function getTabbables(root) {
+  if (!root) return [];
+  const selector = [
+    'a[href]','area[href]','input:not([disabled]):not([type="hidden"])','select:not([disabled])','textarea:not([disabled])',
+    'button:not([disabled])','iframe','object','embed','[contenteditable]','[tabindex]:not([tabindex="-1"])'
+  ].join(',');
+  return Array.from(root.querySelectorAll(selector))
+    .filter(el => el.offsetParent !== null || el === document.activeElement);
+}
+
+let trapState = null; // { container, lastActive, onKeydown }
+function trapFocus(container) {
+  if (!container) return;
+  const tabbables = getTabbables(container);
+  const first = tabbables[0];
+  const last = tabbables[tabbables.length - 1];
+  const lastActive = document.activeElement;
+
+  const onKeydown = (e) => {
+    if (e.key !== 'Tab' || tabbables.length === 0) return;
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last?.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first?.focus();
+    }
+  };
+
+  document.addEventListener('keydown', onKeydown);
+  if (first) first.focus();
+  trapState = { container, lastActive, onKeydown };
+}
+
+function releaseFocus() {
+  if (!trapState) return;
+  document.removeEventListener('keydown', trapState.onKeydown);
+  if (trapState.lastActive && trapState.lastActive.focus) {
+    trapState.lastActive.focus();
+  }
+  trapState = null;
+}
+
+// Inert background helpers
+const appBackground = document.getElementById('main-view');
+const episodeBackground = document.getElementById('episode-view');
+function setBackgroundInert(isInert) {
+  [appBackground, episodeBackground].forEach(el => {
+    if (!el) return;
+    if (isInert) {
+      el.setAttribute('inert', '');
+      el.setAttribute('aria-hidden', 'true');
+    } else {
+      el.removeAttribute('inert');
+      el.removeAttribute('aria-hidden');
+    }
+  });
+}
+
+// Enhance drawer open/close for focus + inert
+const drawerTitle = document.getElementById('drawer-title');
+const drawerRegion = document.getElementById('drawer');
+
+const _openDrawerFrom = openDrawerFrom;
+openDrawerFrom = function(el){
+  _openDrawerFrom(el);
+  document.body.classList.add('modal-open');
+  drawerRegion.setAttribute('aria-modal', 'true');
+  drawerRegion.setAttribute('role', 'dialog');
+  drawerRegion.setAttribute('aria-labelledby', 'drawer-title');
+  setBackgroundInert(true);
+  trapFocus(drawerRegion);
+};
+
+const _closeDrawer = closeDrawer;
+closeDrawer = function(){
+  _closeDrawer();
+  drawerRegion.removeAttribute('aria-modal');
+  drawerRegion.removeAttribute('role');
+  drawerRegion.removeAttribute('aria-labelledby');
+  setBackgroundInert(false);
+  releaseFocus();
+  document.body.classList.remove('modal-open');
+};
+
+// Enhance About modal for focus + inert
 const aboutModal = document.getElementById('about-modal');
 const aboutOverlay = document.getElementById('about-overlay');
 const aboutClose = document.getElementById('about-close');
 
-function openAbout(){
-  aboutOverlay.hidden = false;
-  aboutModal.hidden = false;
-  document.body.style.overflow = 'hidden';
-  aboutClose?.focus();
-}
-function closeAbout(){
-  aboutOverlay.hidden = true;
-  aboutModal.hidden = true;
-  document.body.style.overflow = '';
-}
-aboutOverlay?.addEventListener('click', closeAbout);
-aboutClose?.addEventListener('click', closeAbout);
+const _openAbout = openAbout;
+openAbout = function(){
+  _openAbout();
+  document.body.classList.add('modal-open');
+  aboutModal.setAttribute('aria-modal', 'true');
+  aboutModal.setAttribute('role', 'dialog');
+  setBackgroundInert(true);
+  trapFocus(aboutModal);
+};
+
+const _closeAbout = closeAbout;
+closeAbout = function(){
+  _closeAbout();
+  aboutModal.removeAttribute('aria-modal');
+  aboutModal.removeAttribute('role');
+  setBackgroundInert(false);
+  releaseFocus();
+  document.body.classList.remove('modal-open');
+};
 
 // Hash routing: #mode=timeline|themes, #episode=slug
 window.addEventListener('hashchange', applyHashRoute);
