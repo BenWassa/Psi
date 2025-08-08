@@ -88,13 +88,24 @@ function attachOpenHandlers(selector){
   });
 }
 
-function showEpisodePage(data) {
+async function showEpisodePage(data) {
   closeDrawer();
   mainView.hidden = true;
   episodeView.hidden = false;
 
   episodeTitle.textContent = data.title;
-  episodeContent.innerHTML = `<p>${data.desc}</p>`;
+
+  if (data.contentUrl) {
+    try {
+      const res = await fetch(data.contentUrl, { cache: 'no-store' });
+      const html = await res.text();
+      episodeContent.innerHTML = html;
+    } catch (e) {
+      episodeContent.innerHTML = `<p>${data.desc}</p>`;
+    }
+  } else {
+    episodeContent.innerHTML = `<p>${data.desc}</p>`;
+  }
 
   window.scrollTo(0, 0);
   backBtn.focus();
@@ -134,6 +145,7 @@ function renderTimeline(items) {
     el.dataset.themes = (item.themes || []).join(', ');
     el.dataset.desc = item.desc || '';
     el.dataset.slug = item.slug;
+    el.dataset.contentUrl = item.contentUrl || '';
     el.innerHTML = `<div class="eyebrow">Era</div><div class="name">${item.title}</div><div class="meta">${item.era}</div>`;
     wrap.appendChild(el);
   });
@@ -157,6 +169,7 @@ function renderThemes(items) {
     el.dataset.linked = (item.linked || []).join(', ');
     el.dataset.desc = item.desc || '';
     el.dataset.slug = item.slug;
+    el.dataset.contentUrl = item.contentUrl || '';
     el.innerHTML = `<h3>${item.title}</h3><p>${item.summary || 'Cross-cultural idea.'}</p>`;
     wrap.appendChild(el);
   });
@@ -446,5 +459,5 @@ showEpisodePage = function(data){
   params.set('mode', 'timeline');
   if (data.slug) params.set('episode', data.slug);
   location.hash = `#${params.toString()}`;
-  originalShowEpisodePage(data);
+  return originalShowEpisodePage(data);
 };
