@@ -105,7 +105,6 @@ header {
 
 /* Panels */
 .panels { display:grid; grid-template-columns: 1fr; gap: clamp(12px, 2vw, 20px); }
-@media (min-width: 980px) { .panels { grid-template-columns: 1fr 1fr; } }
 
 .panel {
   background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
@@ -115,6 +114,9 @@ header {
 .panel p { margin: 0 0 12px; color: var(--muted); }
 
 /* Timeline */
+#panel-timeline {
+  padding: clamp(14px, 2.4vw, 20px);
+}
 .timeline-shell { position: relative; }
 .timeline-shell::before,
 .timeline-shell::after {
@@ -122,7 +124,7 @@ header {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 40px;
+  width: 60px;
   pointer-events: none;
   z-index: 1;
 }
@@ -133,7 +135,7 @@ header {
   position: relative;
   overflow-x: auto;
   overflow-y: hidden;
-  padding: 0 48px 8px;
+  padding: 0 72px 16px;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
 }
@@ -145,20 +147,20 @@ header {
   align-items: center;
 }
 .rail {
-  height: 2px;
   background: #2a3441;
   position: absolute;
-  left: 48px;
-  right: 48px;
-  top: 92px;
+  left: 72px;
+  right: 72px;
+  top: 110px;
+  height: 3px;
 }
 .node {
   flex: 0 0 auto;
-  min-width: clamp(140px, 24vw, 220px);
+  min-width: clamp(180px, 22vw, 260px);
   background: var(--card);
   border: 1px solid #2a3441;
   border-radius: 12px;
-  padding: 14px;
+  padding: 20px;
   position: relative;
   cursor: pointer;
   transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
@@ -167,18 +169,18 @@ header {
 .node.active { border-color: var(--accent-2); box-shadow: 0 0 0 2px var(--accent-2); }
 .node::after {
   content: "";
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   background: var(--accent);
   border-radius: 999px;
   position: absolute;
-  left: calc(50% - 5px);
-  top: -18px;
-  box-shadow: 0 0 0 4px rgba(124,196,255,.18);
+  left: calc(50% - 6px);
+  top: -24px;
+  box-shadow: 0 0 0 6px rgba(124,196,255,.18);
 }
 .node:hover { transform: translateY(-2px); border-color: var(--accent); box-shadow: 0 12px 24px rgba(0,0,0,.25); }
 .node .eyebrow { color: var(--muted); font-size: 12px; }
-.node .name { font-weight: 700; margin: 6px 0 6px; }
+.node .name { font-weight: 700; margin: 6px 0 6px; font-size: 16px; }
 .node .meta { font-size: 12px; color: #a9bacf; }
 
 .timeline-nav {
