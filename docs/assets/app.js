@@ -171,17 +171,31 @@ function addTimelineKeyboardNav(container){
     const currentIndex = list.indexOf(document.activeElement);
     if (currentIndex === -1) return;
 
-    if (e.key === 'ArrowRight') {
-      e.preventDefault();
-      const next = list[Math.min(currentIndex + 1, list.length - 1)];
-      next?.focus();
-      next?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-    }
-    if (e.key === 'ArrowLeft') {
-      e.preventDefault();
-      const prev = list[Math.max(currentIndex - 1, 0)];
-      prev?.focus();
-      prev?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    const focusNode = (index, align = 'center') => {
+      const target = list[index];
+      target?.focus();
+      target?.scrollIntoView({ behavior: 'smooth', inline: align, block: 'nearest' });
+    };
+
+    switch (e.key) {
+      case 'ArrowRight':
+        e.preventDefault();
+        focusNode(Math.min(currentIndex + 1, list.length - 1));
+        break;
+      case 'ArrowLeft':
+        e.preventDefault();
+        focusNode(Math.max(currentIndex - 1, 0));
+        break;
+      case 'Home':
+        e.preventDefault();
+        focusNode(0, 'start');
+        break;
+      case 'End':
+        e.preventDefault();
+        focusNode(list.length - 1, 'end');
+        break;
+      default:
+        break;
     }
   });
 }
