@@ -1,13 +1,291 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Psi Project</title>
-    <link rel="stylesheet" href="assets/style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Mind Unfolding – Dual-Mode Mockup</title>
+  <style>
+    :root {
+      --bg: #0b0d10;
+      --panel: #12161b;
+      --card: #1a2028;
+      --muted: #9fb0c3;
+      --text: #e9f0f8;
+      --accent: #7cc4ff;
+      --accent-2: #a3ffcb;
+      --ring: rgba(124, 196, 255, 0.55);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+
+    /* Global */
+    html, body { height: 100%; }
+    body {
+      margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background: radial-gradient(1200px 700px at 70% -10%, #1b2230 0%, var(--bg) 45%);
+      color: var(--text);
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 24px; }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(6px);
+      background: linear-gradient(180deg, rgba(11,13,16,.85), rgba(11,13,16,.65) 60%, transparent);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .nav {
+      display: flex; align-items: center; gap: 16px; justify-content: space-between;
+      padding: 10px 24px;
+    }
+    .brand { display:flex; align-items:center; gap:12px; font-weight: 700; letter-spacing: .5px; }
+    .brand .logo {
+      width: 36px; height: 36px; display:grid; place-items:center; border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #0a0a0a; font-weight: 900;
+      box-shadow: 0 10px 18px rgba(124,196,255,.25);
+    }
+    .mode-toggle { display:flex; gap:8px; background: #0e1217; border:1px solid #2a3441; padding:4px; border-radius: 999px; }
+    .mode-toggle button {
+      border: none; background: transparent; color: var(--muted); padding:8px 14px; border-radius: 999px; cursor: pointer; font-weight:600;
+    }
+    .mode-toggle button.active { background: #1b2431; color: var(--text); box-shadow: inset 0 0 0 1px #2c3a4a; }
+
+    /* Intro */
+    .hero { padding: 28px 24px 12px; }
+    .title { font-size: clamp(20px, 4vw, 36px); font-weight: 800; margin: 0 0 8px; }
+    .subtitle { color: var(--muted); margin: 0; }
+
+    /* Panels */
+    .panels { display:grid; grid-template-columns: 1fr; gap: 16px; }
+    @media (min-width: 980px) { .panels { grid-template-columns: 1fr 1fr; } }
+
+    .panel {
+      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+      border: 1px solid #1e2731; border-radius: 18px; padding: 18px; box-shadow: var(--shadow);
+    }
+    .panel h2 { margin: 0 0 8px; font-size: 18px; letter-spacing: .4px; }
+    .panel p { margin: 0 0 12px; color: var(--muted); }
+
+    /* Timeline */
+    .timeline-wrap { position: relative; overflow: auto; padding-bottom: 8px; }
+    .timeline { display:flex; gap: 10px; padding: 8px 2px; min-width: 660px; align-items: center; }
+    .rail { height: 2px; background: #2a3441; position: absolute; left: 18px; right: 18px; top: 86px; }
+    .node {
+      min-width: 140px; background: var(--card); border:1px solid #2a3441; border-radius: 12px; padding: 12px; position: relative; cursor: pointer;
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    }
+    .node::after { content:""; width: 10px; height:10px; background: var(--accent); border-radius: 999px; position:absolute; left: calc(50% - 5px); top: -18px; box-shadow: 0 0 0 4px rgba(124,196,255,.18); }
+    .node:hover { transform: translateY(-2px); border-color: var(--accent); box-shadow: 0 12px 24px rgba(0,0,0,.25); }
+    .node .eyebrow { color: var(--muted); font-size: 12px; }
+    .node .name { font-weight: 700; margin: 4px 0 6px; }
+    .node .meta { font-size: 12px; color: #a9bacf; }
+
+    /* Themes */
+    .themes { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }
+    @media (min-width: 700px){ .themes { grid-template-columns: repeat(3, minmax(0,1fr)); } }
+    .theme {
+      background: conic-gradient(from 210deg at 80% 10%, rgba(124,196,255,.15), rgba(163,255,203,.08));
+      border: 1px solid #2a3441; border-radius: 14px; padding: 14px; cursor:pointer; position: relative;
+      transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+    }
+    .theme:hover { transform: translateY(-2px); border-color: var(--accent); box-shadow: 0 12px 24px rgba(0,0,0,.25); }
+    .theme h3 { margin: 0 0 4px; font-size: 16px; }
+    .theme p { margin: 0; color: var(--muted); font-size: 13px; }
+
+    /* Footer note */
+    .note { margin-top: 6px; color: #a9bacf; font-size: 12px; }
+
+    /* Drawer */
+    .drawer {
+      position: fixed; left: 0; right: 0; bottom: -100%; background: var(--panel); border-top: 1px solid #2a3441;
+      box-shadow: 0 -20px 50px rgba(0,0,0,.45); border-radius: 16px 16px 0 0; padding: 16px; transition: bottom .24s ease; z-index: 80;
+    }
+    .drawer.open { bottom: 0; }
+    .drawer .bar { width: 44px; height: 4px; border-radius: 999px; background: #2f3c4d; margin: 0 auto 10px; }
+    .drawer .row { display:flex; gap: 14px; align-items: start; }
+    .drawer h3 { margin: 4px 0 2px; }
+    .drawer .desc { color: var(--muted); margin: 0 0 8px; }
+    .chip { display:inline-block; padding: 4px 10px; font-size: 12px; border-radius: 999px; border:1px solid #2a3441; margin-right: 6px; }
+
+    /* Buttons */
+    .btn {
+      border:1px solid #2a3441; background:#0f141a; color:var(--text); padding:8px 12px; border-radius:10px; cursor:pointer;
+      transition: border-color .15s ease, transform .1s ease;
+    }
+    .btn:hover { border-color: var(--accent); transform: translateY(-1px); }
+    .primary { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color:#0b0d10; border-color: transparent; font-weight:700; }
+
+    /* Accessibility helpers */
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+    /* Focus outlines */
+    :is(.node, .theme, .btn):focus-visible { outline: 3px solid var(--ring); outline-offset: 2px; }
+  </style>
 </head>
 <body>
-    <h1>Welcome to Psi</h1>
-    <p>A living chronicle of psychological thought — unfolding through voices, stories, and shifting paradigms.</p>
+  <header>
+    <nav class="nav container" aria-label="Top Navigation">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">Ψ</div>
+        <div>The Mind Unfolding</div>
+      </div>
+      <div class="mode-toggle" role="tablist" aria-label="Explore by">
+        <button id="tab-timeline" class="active" role="tab" aria-selected="true" aria-controls="panel-timeline">Timeline</button>
+        <button id="tab-themes" role="tab" aria-selected="false" aria-controls="panel-themes">Themes</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container" id="main">
+    <section class="hero" aria-labelledby="page-title">
+      <h1 class="title" id="page-title">Before the Mind Was Measured</h1>
+      <p class="subtitle">Walk through time, or dive into the ideas themselves. Every episode lives in both modes.</p>
+    </section>
+
+    <section class="panels" aria-label="Explore Modes">
+      <!-- TIMELINE MODE -->
+      <section id="panel-timeline" class="panel" role="tabpanel" aria-labelledby="tab-timeline">
+        <h2>Timeline Mode</h2>
+        <p>Follow the chronological spine from the dawn of recorded thought.</p>
+        <div class="timeline-wrap">
+          <div class="rail"></div>
+          <div class="timeline" role="list">
+            <article class="node" role="listitem" tabindex="0" data-kind="era" data-title="Mesopotamia" data-era="c. 2600–1200 BCE" data-themes="Dream Realms, Fate & Omens" data-desc="Dreams as divine command; the traveling soul; royal dream-omen politics.">
+              <div class="eyebrow">Era</div>
+              <div class="name">Mesopotamia</div>
+              <div class="meta">c. 2600–1200 BCE</div>
+            </article>
+
+            <article class="node" role="listitem" tabindex="0" data-kind="era" data-title="Egypt" data-era="c. 2500–300 BCE" data-themes="Soul Architecture, Judgment" data-desc="Ka & Ba, the weighing of the heart, and dream-books as guidance.">
+              <div class="eyebrow">Era</div>
+              <div class="name">Egypt</div>
+              <div class="meta">c. 2500–300 BCE</div>
+            </article>
+
+            <article class="node" role="listitem" tabindex="0" data-kind="era" data-title="Greece I — Asclepian Temples" data-era="c. 500–200 BCE" data-themes="Healing, Dreams" data-desc="Ritual sleep (enkóimesis); snakes, water, silence; recorded cures by priests.">
+              <div class="eyebrow">Era</div>
+              <div class="name">Greece I — Asclepian</div>
+              <div class="meta">c. 500–200 BCE</div>
+            </article>
+
+            <article class="node" role="listitem" tabindex="0" data-kind="era" data-title="Greece II — Orphic & Platonic Psyche" data-era="c. 500–300 BCE" data-themes="Soul Architecture, Purification" data-desc="Orphic soul-prison myth; Platonic tripartite psyche and moral cultivation.">
+              <div class="eyebrow">Era</div>
+              <div class="name">Greece II — Orphic/Plato</div>
+              <div class="meta">c. 500–300 BCE</div>
+            </article>
+          </div>
+        </div>
+        <p class="note">Tip: Scroll horizontally to browse, or use arrow keys to focus nodes and press Enter.</p>
+      </section>
+
+      <!-- THEME MODE -->
+      <section id="panel-themes" class="panel" role="tabpanel" aria-labelledby="tab-themes" hidden>
+        <h2>Theme Mode</h2>
+        <p>Jump between the big ideas that echo across eras.</p>
+        <div class="themes" role="list">
+          <article class="theme" role="listitem" tabindex="0" data-kind="theme" data-title="Dream Realms" data-linked="Mesopotamia, Greece I" data-desc="From omen tablets to temple-healing sleep — dreams as portals and prescriptions.">
+            <h3>Dream Realms</h3>
+            <p>Dreams as portals, omens, and cures.</p>
+          </article>
+          <article class="theme" role="listitem" tabindex="0" data-kind="theme" data-title="Soul Architecture" data-linked="Egypt, Greece II" data-desc="Ka & Ba, Orphic dualism, and Plato’s tripartite psyche.">
+            <h3>Soul Architecture</h3>
+            <p>What is the self made of?</p>
+          </article>
+          <article class="theme" role="listitem" tabindex="0" data-kind="theme" data-title="Healing & Transformation" data-linked="Greece I, Modern" data-desc="Incubation rites, purification, and the long arc toward psychotherapy.">
+            <h3>Healing & Transformation</h3>
+            <p>Ritual, medicine, and psyche.</p>
+          </article>
+        </div>
+      </section>
+    </section>
+
+    <div style="margin-top:18px; display:flex; gap:10px; flex-wrap:wrap;">
+      <button class="btn primary" id="btn-listen">Start Listening</button>
+      <button class="btn" id="btn-about">About the Project</button>
+    </div>
+  </main>
+
+  <!-- Drawer -->
+  <aside class="drawer" id="drawer" aria-live="polite" aria-label="Details Drawer">
+    <div class="bar" aria-hidden="true"></div>
+    <div class="row">
+      <div style="flex:1 1 auto; min-width: 240px;">
+        <h3 id="drawer-title">Title</h3>
+        <p class="desc" id="drawer-desc">Description</p>
+        <div id="drawer-chips"></div>
+      </div>
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <button class="btn" id="drawer-close">Close</button>
+        <button class="btn primary">Open Episode Page</button>
+      </div>
+    </div>
+  </aside>
+
+  <script>
+    // Tab switching
+    const tabTimeline = document.getElementById('tab-timeline');
+    const tabThemes = document.getElementById('tab-themes');
+    const panelTimeline = document.getElementById('panel-timeline');
+    const panelThemes = document.getElementById('panel-themes');
+
+    function setTab(tab){
+      const isTimeline = tab === 'timeline';
+      tabTimeline.classList.toggle('active', isTimeline);
+      tabTimeline.setAttribute('aria-selected', isTimeline);
+      tabThemes.classList.toggle('active', !isTimeline);
+      tabThemes.setAttribute('aria-selected', !isTimeline);
+      panelTimeline.hidden = !isTimeline;
+      panelThemes.hidden = isTimeline;
+    }
+    tabTimeline.addEventListener('click', () => setTab('timeline'));
+    tabThemes.addEventListener('click', () => setTab('themes'));
+
+    // Drawer logic
+    const drawer = document.getElementById('drawer');
+    const dTitle = document.getElementById('drawer-title');
+    const dDesc = document.getElementById('drawer-desc');
+    const dChips = document.getElementById('drawer-chips');
+    const closeBtn = document.getElementById('drawer-close');
+
+    function openDrawerFrom(el){
+      const title = el.getAttribute('data-title');
+      const desc = el.getAttribute('data-desc');
+      const era = el.getAttribute('data-era');
+      const themes = el.getAttribute('data-themes') || el.getAttribute('data-linked') || '';
+
+      dTitle.textContent = title || 'Untitled';
+      dDesc.textContent = desc || '';
+      dChips.innerHTML = '';
+
+      if (era){ addChip('Era', era); }
+      if (themes){ addChip('Themes', themes); }
+
+      drawer.classList.add('open');
+    }
+
+    function addChip(label, value){
+      const c = document.createElement('span');
+      c.className = 'chip';
+      c.textContent = `${label}: ${value}`;
+      dChips.appendChild(c);
+    }
+
+    function attachOpenHandlers(selector){
+      document.querySelectorAll(selector).forEach(el => {
+        el.addEventListener('click', () => openDrawerFrom(el));
+        el.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openDrawerFrom(el); }
+        });
+      });
+    }
+
+    attachOpenHandlers('.node');
+    attachOpenHandlers('.theme');
+    closeBtn.addEventListener('click', () => drawer.classList.remove('open'));
+
+    // Demo buttons
+    document.getElementById('btn-listen').addEventListener('click', () => setTab('timeline'));
+    document.getElementById('btn-about').addEventListener('click', () => setTab('themes'));
+  </script>
 </body>
 </html>
