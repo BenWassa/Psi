@@ -410,6 +410,18 @@ const aboutModal = document.getElementById('about-modal');
 const aboutOverlay = document.getElementById('about-overlay');
 const aboutClose = document.getElementById('about-close');
 
+function openAbout(){
+  aboutOverlay.hidden = false;
+  aboutModal.hidden = false;
+  aboutClose?.focus();
+}
+function closeAbout(){
+  aboutOverlay.hidden = true;
+  aboutModal.hidden = true;
+}
+aboutOverlay?.addEventListener('click', closeAbout);
+aboutClose?.addEventListener('click', closeAbout);
+
 const _openAbout = openAbout;
 openAbout = function(){
   _openAbout();
